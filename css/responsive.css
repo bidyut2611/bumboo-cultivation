@@ -1,0 +1,302 @@
+/* ============================================
+   BambooConnect India — Responsive Styles
+   ============================================ */
+
+/* ---- Large Tablets / Small Desktops ---- */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .hero-stats {
+    gap: var(--space-2xl);
+  }
+
+  .supply-chain {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .stepper-label {
+    display: none;
+  }
+
+  .filter-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Tablets ---- */
+@media (max-width: 768px) {
+  :root {
+    --space-4xl: 4rem;
+  }
+
+  .container {
+    padding: 0 var(--space-lg);
+  }
+
+  /* Nav */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(7, 15, 11, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xl);
+    z-index: var(--z-dropdown);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav-right .btn {
+    display: none;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-description {
+    margin: 0 auto var(--space-2xl);
+  }
+
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+  }
+
+  .hero-decoration {
+    display: none;
+  }
+
+  .hero-image-wrapper {
+    display: none;
+  }
+
+  /* Grid */
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Map */
+  .india-map-container {
+    max-width: 100%;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  /* Filter */
+  .filter-panel {
+    grid-template-columns: 1fr;
+  }
+
+  /* Provider cards */
+  .provider-details {
+    grid-template-columns: 1fr;
+  }
+
+  /* Search bar */
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar .btn {
+    width: 100%;
+  }
+
+  /* Stepper */
+  .stepper {
+    overflow-x: auto;
+    padding-bottom: var(--space-md);
+  }
+
+  .stepper-line {
+    width: 30px;
+  }
+
+  /* Stats */
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  /* Tabs */
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab-btn {
+    white-space: nowrap;
+  }
+
+  /* Requirement meta */
+  .requirement-meta {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  /* Map legend */
+  .map-legend {
+    flex-wrap: wrap;
+  }
+
+  /* Knowledge card */
+  .knowledge-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Chain */
+  .chain-arrow {
+    display: none;
+  }
+
+  .supply-chain {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 480px) {
+  :root {
+    --space-4xl: 3rem;
+    --space-3xl: 2.5rem;
+  }
+
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.15rem; }
+
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .grid-4 { grid-template-columns: 1fr; }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-stat-number {
+    font-size: 1.5rem;
+  }
+
+  .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .card {
+    padding: var(--space-lg);
+  }
+
+  .modal {
+    width: 95%;
+    padding: var(--space-lg);
+  }
+
+  .provider-actions {
+    flex-direction: column;
+  }
+
+  .provider-actions .btn {
+    width: 100%;
+  }
+
+  .species-card-image {
+    height: 140px;
+  }
+
+  /* Supply chain grid */
+  .supply-chain {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Stepper */
+  .stepper-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
+
+  .stepper-line {
+    width: 20px;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    bottom: 15px;
+  }
+
+  /* Toast */
+  .toast-container {
+    left: 10px;
+    right: 10px;
+  }
+
+  .toast {
+    min-width: auto;
+  }
+}
+
+/* ---- Very Small Phones ---- */
+@media (max-width: 360px) {
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+  }
+
+  .nav-logo .logo-icon {
+    font-size: 1.4rem;
+  }
+}

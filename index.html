@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BambooConnect India | Bamboo Cultivation & Supply Chain Platform</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="India's largest database for bamboo cultivation, providers, and supply chain. Connect with bamboo farmers, find species like Bambusa balcooa, and fulfill your bamboo requirements.">
+  <meta name="keywords"
+    content="bamboo cultivation, bamboo providers india, bamboo supply chain, bambusa balcooa, bamboo farming subsidies, bamboo mission">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar">
+    <div class="container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">🎋</span>
+        <span>BambooConnect</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
+
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#providers">Find Providers</a></li>
+        <li><a href="#species">Species Guide</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#knowledge">Knowledge Hub</a></li>
+        <!-- Mobile only CTA -->
+        <li style="display: none;" class="mobile-cta">
+          <button class="btn btn-primary" data-modal="registration-modal">Register as Provider</button>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="btn btn-outline" data-modal="registration-modal">Register as Provider</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero page-section active">
+    <div id="particles-canvas"></div>
+    <div class="container">
+      <div class="grid grid-2 items-center relative">
+        <!-- Content -->
+        <div class="hero-content">
+          <div class="hero-badge animate-fade-in-up delay-1">
+            🌿 National Bamboo Mission Alignment
+          </div>
+          <h1 class="animate-fade-in-up delay-2">
+            Connecting India's <br />
+            <span class="animated-gradient-text">Bamboo Ecosystem</span>
+          </h1>
+          <p class="hero-description animate-fade-in-up delay-3">
+            The largest database of bamboo growers, processors, and buyers across India. Find specific bamboo species
+            near you, post requirements, and access the supply chain directly.
+          </p>
+
+          <div class="hero-actions animate-fade-in-up delay-4">
+            <button class="btn btn-primary btn-lg" onclick="scrollToElement('providers')">Find Providers</button>
+            <button class="btn btn-accent btn-lg" onclick="scrollToElement('requirements')">Post Requirement</button>
+          </div>
+
+          <div class="hero-stats animate-fade-in-up delay-5">
+            <div class="hero-stat">
+              <span class="hero-stat-number" id="stat-providers-count" data-counter="0">0</span>
+              <span class="hero-stat-label">Verified Providers</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-number" id="stat-states-count" data-counter="0">0</span>
+              <span class="hero-stat-label">States Covered</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-number"><span id="stat-capacity-count" data-counter="0">0</span>k+</span>
+              <span class="hero-stat-label">Tonnes Capacity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Banner Image -->
+        <div class="hero-image-wrapper animate-fade-in-up delay-3">
+          <div class="hero-image-container">
+            <img src="assets/images/hero-banner.png" alt="Bamboo forest in India with golden sunlight"
+              class="hero-image">
+            <div class="hero-image-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <span>↓</span>
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="section">
+    <div class="bg-glow" style="right: -10%; top: 20%;"></div>
+    <div class="container relative z-10">
+      <div class="section-header reveal">
+        <span class="section-badge">Availability Map</span>
+        <h2>Explore by Region</h2>
+        <p class="subtitle">Click on any state to find bamboo providers and view cultivation statistics in that region.
+        </p>
+      </div>
+
+      <div class="grid grid-2 items-center">
+        <div class="india-map-container reveal-left" id="india-map-svg">
+          <!-- Simplified SVG Proxy for India Map (Usually would load complex SVG here) -->
+          <!-- We use circles for states as a decorative fallback since actual country path SVGs are massive -->
+          <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outline container to give impression of map -->
+            <path d="M150,50 Q250,0 350,100 Q450,200 400,350 Q300,550 200,500 Q100,450 100,250 Z"
+              fill="rgba(255,255,255,0.02)" stroke="var(--glass-border)"></path>
+
+            <!-- Nodes representing states -->
+            <path d="M150,150 A20,20 0 1,1 150,150.01" id="Punjab" title="Punjab" transform="scale(1.5)"></path>
+            <path d="M250,180 A25,25 0 1,1 250,180.01" id="Uttar Pradesh" title="Uttar Pradesh" transform="scale(1)">
+            </path>
+            <path d="M180,280 A30,30 0 1,1 180,280.01" id="Madhya Pradesh" title="Madhya Pradesh" transform="scale(1)">
+            </path>
+            <path d="M380,220 A35,35 0 1,1 380,220.01" id="Assam" title="Assam" transform="scale(1)"></path>
+            <path d="M420,250 A20,20 0 1,1 420,250.01" id="Nagaland" title="Nagaland" transform="scale(1)"></path>
+            <path d="M400,280 A22,22 0 1,1 400,280.01" id="Mizoram" title="Mizoram" transform="scale(1)"></path>
+            <path d="M120,320 A30,30 0 1,1 120,320.01" id="Maharashtra" title="Maharashtra" transform="scale(1)"></path>
+            <path d="M250,350 A25,25 0 1,1 250,350.01" id="Chhattisgarh" title="Chhattisgarh" transform="scale(1)">
+            </path>
+            <path d="M320,320 A28,28 0 1,1 320,320.01" id="Odisha" title="Odisha" transform="scale(1)"></path>
+            <path d="M150,420 A30,30 0 1,1 150,420.01" id="Karnataka" title="Karnataka" transform="scale(1)"></path>
+            <path d="M220,400 A28,28 0 1,1 220,400.01" id="Andhra Pradesh" title="Andhra Pradesh" transform="scale(1)">
+            </path>
+            <path d="M160,500 A20,20 0 1,1 160,500.01" id="Kerala" title="Kerala" transform="scale(1)"></path>
+            <path d="M220,500 A25,25 0 1,1 220,500.01" id="Tamil Nadu" title="Tamil Nadu" transform="scale(1)"></path>
+          </svg>
+          <div id="map-tooltip" class="map-tooltip"></div>
+        </div>
+
+        <div class="reveal-right">
+          <h3 style="margin-bottom: var(--space-md);">Visualizing the Supply Chain</h3>
+          <p style="margin-bottom: var(--space-lg);">India has over 130 species of bamboo, but finding the right
+            commercial grade requires connecting with local growers over vast geographies.</p>
+
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-md);">
+            <li class="flex items-center gap-sm">
+              <span class="knowledge-icon green" style="width: 32px; height: 32px; font-size: 1rem;">📍</span>
+              <span><strong>Northeast Hub:</strong> Highest density of paper and pulp species (Melocanna
+                baccifera).</span>
+            </li>
+            <li class="flex items-center gap-sm">
+              <span class="knowledge-icon gold" style="width: 32px; height: 32px; font-size: 1rem;">🏗️</span>
+              <span><strong>Central India:</strong> Abundant Solid Bamboo (Dendrocalamus strictus) for
+                construction.</span>
+            </li>
+            <li class="flex items-center gap-sm">
+              <span class="knowledge-icon blue" style="width: 32px; height: 32px; font-size: 1rem;">🎋</span>
+              <span><strong>Southern States:</strong> Exceptional Giant Bamboo (Dendrocalamus asper) for structural
+                use.</span>
+            </li>
+          </ul>
+
+          <div class="map-legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background: rgba(45, 106, 79, 0.2);"></div>
+              <span>None/Low</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: rgba(82, 183, 136, 0.4);"></div>
+              <span>Medium</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: rgba(27, 67, 50, 1);"></div>
+              <span>High Density</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Engine Section -->
+  <section id="providers" class="section" style="background: var(--bg-surface);">
+    <div class="bg-grid"></div>
+    <div class="container relative z-10">
+      <div class="section-header reveal">
+        <span class="section-badge">Provider Database</span>
+        <h2>Find Bamboo Providers</h2>
+      </div>
+
+      <!-- Filter Panel -->
+      <div id="search-container" class="filter-panel reveal delay-1" style="margin-bottom: var(--space-2xl);">
+        <div class="form-group" style="margin: 0; grid-column: 1 / -1;">
+          <div class="search-bar">
+            <span>🔍</span>
+            <input type="text" id="search-input" placeholder="Search by name, state, district, or species...">
+            <button class="btn btn-primary btn-sm">Search</button>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin: 0;">
+          <label class="form-label">State</label>
+          <select id="filter-state" class="form-select">
+            <option value="">All States</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin: 0;">
+          <label class="form-label">District</label>
+          <select id="filter-district" class="form-select" disabled>
+            <option value="">All Districts</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin: 0;">
+          <label class="form-label">Bamboo Species</label>
+          <select id="filter-species" class="form-select">
+            <option value="">All Species</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin: 0;">
+          <label class="form-label">End Use Category</label>
+          <select id="filter-use" class="form-select">
+            <option value="">All Categories</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="result-count" class="result-count reveal delay-2">Found <span>0</span> providers</div>
+
+      <!-- Results Grid -->
+      <div id="search-results" class="grid grid-3">
+        <!-- Populated by search.js -->
+        <div class="loading-spinner"></div>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination"></div>
+    </div>
+  </section>
+
+  <!-- Bamboo Species Guide -->
+  <section id="species" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Encyclopedia</span>
+        <h2>Commercial Bamboo Species</h2>
+        <p class="subtitle">Understand the primary species cultivated in India and their optimal use cases in the supply
+          chain.</p>
+      </div>
+
+      <div id="species-container" class="grid grid-4 stagger-children">
+        <!-- Populated by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Board -->
+  <section id="requirements" class="section" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="flex items-center justify-between flex-wrap gap-md reveal" style="margin-bottom: var(--space-2xl);">
+        <div>
+          <h2>Bamboo Requirements</h2>
+          <p class="text-muted">Live marketplace demands from buyers and industries.</p>
+        </div>
+        <button class="btn btn-primary" onclick="openPostRequirementModal()">
+          + Post Requirement
+        </button>
+      </div>
+
+      <div id="requirements-container" class="grid grid-2 stagger-children">
+        <!-- Populated by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Supply Chain & Knowledge Hub -->
+  <section id="knowledge" class="section">
+    <div class="bg-glow" style="left: -10%; top: 30%;"></div>
+    <div class="container relative z-10">
+      <div class="section-header reveal">
+        <span class="section-badge">Knowledge Hub</span>
+        <h2>Empowering the Supply Chain</h2>
+      </div>
+
+      <!-- Supply Chain Flow -->
+      <div class="card-glass reveal"
+        style="padding: var(--space-xl); margin-bottom: var(--space-4xl); border-radius: var(--radius-xl);">
+        <h3 class="text-center" style="margin-bottom: var(--space-lg);">The Hub-and-Spoke Model</h3>
+        <div class="supply-chain">
+          <div class="chain-node">
+            <div class="chain-icon">🌱</div>
+            <div class="chain-label">Farmers &<br />Plantations</div>
+          </div>
+          <div class="chain-arrow">→</div>
+          <div class="chain-node">
+            <div class="chain-icon">🚜</div>
+            <div class="chain-label">Primary Processing<br />(Village Level)</div>
+          </div>
+          <div class="chain-arrow">→</div>
+          <div class="chain-node">
+            <div class="chain-icon">🏭</div>
+            <div class="chain-label">Secondary Processing<br />(Aggregators)</div>
+          </div>
+          <div class="chain-arrow">→</div>
+          <div class="chain-node">
+            <div class="chain-icon">🛍️</div>
+            <div class="chain-label">Market /<br />Industry</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Government Schemes -->
+      <h3 class="reveal" style="margin-bottom: var(--space-xl);">Government Subsidies & Support</h3>
+      <div id="schemes-container" class="grid grid-2 stagger-children">
+        <!-- Populated by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom: var(--space-sm);">
+            <span class="logo-icon">🎋</span>
+            <span>BambooConnect</span>
+          </div>
+          <p class="text-muted">India's premier digital infrastructure mapping the entire bamboo supply chain from farm
+            to factory.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#providers">Search Database</a></li>
+            <li><a href="#species">Species Encyclopedia</a></li>
+            <li><a href="#requirements">Demand Board</a></li>
+            <li><a href="#" data-modal="registration-modal">Register as Provider</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="https://nbm.nic.in" target="_blank">National Bamboo Mission</a></li>
+            <li><a href="#">Cultivation Guidelines</a></li>
+            <li><a href="#">Subsidy Checkers</a></li>
+            <li><a href="#">State Policies</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="#">help@bambooconnect.in</a></li>
+            <li><a href="#">+91 1800-BAMBOO</a></li>
+            <li><a href="#">Support Center</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 BambooConnect India. Inspired by NestCluster. Developer:bidyut.</div>
+        <div class="footer-social">
+          <a href="#">𝕏</a>
+          <a href="#">in</a>
+          <a href="#">f</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+  <div class="modal-backdrop"></div>
+
+  <!-- Provider Registration Modal -->
+  <div id="registration-modal" class="modal">
+    <div class="modal-header">
+      <h3>Register as a Provider</h3>
+      <button class="modal-close">&times;</button>
+    </div>
+
+    <!-- Stepper -->
+    <div class="stepper">
+      <div class="stepper-step active" id="st-1">
+        <div class="stepper-number">1</div>
+        <span class="stepper-label">Personal details</span>
+      </div>
+      <div class="stepper-line active"></div>
+
+      <div class="stepper-step" id="st-2">
+        <div class="stepper-number">2</div>
+        <span class="stepper-label">Location</span>
+      </div>
+      <div class="stepper-line"></div>
+
+      <div class="stepper-step" id="st-3">
+        <div class="stepper-number">3</div>
+        <span class="stepper-label">Bamboo info</span>
+      </div>
+      <div class="stepper-line"></div>
+
+      <div class="stepper-step" id="st-4">
+        <div class="stepper-number">4</div>
+        <span class="stepper-label">Review</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form id="provider-registration-form">
+      <!-- Step 1 -->
+      <div class="page-section active" id="step-1">
+        <div class="form-group">
+          <label class="form-label">Full Name / Organization</label>
+          <input type="text" name="name" class="form-input" placeholder="e.g. Ramesh Kumar or GreenBamboo Farms"
+            required>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" name="phone" class="form-input" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-input" placeholder="contact@example.com" required>
+          </div>
+        </div>
+        <div class="flex justify-between" style="margin-top:var(--space-xl);">
+          <div></div>
+          <button class="btn btn-primary next-step">Next Step →</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="page-section" id="step-2">
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <select name="state" id="reg-state" class="form-select" required>
+              <option value="">Select State</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">District</label>
+            <select name="district" id="reg-district" class="form-select" required disabled>
+              <option value="">Select District</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group" style="grid-column: 1 / 2;">
+            <label class="form-label">PIN Code</label>
+            <input type="text" name="pincode" class="form-input" placeholder="e.g. 781001" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Full Address / Village</label>
+          <textarea name="address" class="form-textarea" placeholder="Detailed farm or warehouse location..."
+            required></textarea>
+        </div>
+        <div class="flex justify-between" style="margin-top:var(--space-xl);">
+          <button class="btn btn-ghost prev-step">← Back</button>
+          <button class="btn btn-primary next-step">Next Step →</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="page-section" id="step-3">
+        <div class="form-group">
+          <label class="form-label">Bamboo Species Grown (Select all that apply)</label>
+          <div id="reg-species-container" class="form-checkbox-group">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Target Markets / End Uses (Select all that apply)</label>
+          <div id="reg-uses-container" class="form-checkbox-group">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="form-group">
+            <label class="form-label">Annual Capacity</label>
+            <div style="position: relative;">
+              <input type="number" name="capacityTonnes" class="form-input" style="padding-right: 60px;" required
+                min="1">
+              <span
+                style="position: absolute; right: 15px; top: 12px; color: var(--text-muted); font-size: 0.9rem;">Tonnes</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Land Area</label>
+            <div style="position: relative;">
+              <input type="number" name="landAreaAcres" class="form-input" style="padding-right: 60px;" required
+                min="1">
+              <span
+                style="position: absolute; right: 15px; top: 12px; color: var(--text-muted); font-size: 0.9rem;">Acres</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Experience</label>
+            <div style="position: relative;">
+              <input type="number" name="experienceYears" class="form-input" style="padding-right: 60px;" required
+                min="0">
+              <span
+                style="position: absolute; right: 15px; top: 12px; color: var(--text-muted); font-size: 0.9rem;">Years</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between" style="margin-top:var(--space-xl);">
+          <button class="btn btn-ghost prev-step">← Back</button>
+          <button class="btn btn-primary next-step">Review Details →</button>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="page-section" id="step-4">
+        <div class="card-glass" style="padding: var(--space-lg); margin-bottom: var(--space-xl);">
+          <h4 style="margin-bottom: var(--space-md); color: var(--primary-light);">Summary</h4>
+
+          <div class="grid grid-2" style="gap: var(--space-md);">
+            <div>
+              <div class="text-muted" style="font-size: 0.8rem; text-transform: uppercase;">Provider</div>
+              <div id="review-name" class="font-bold"></div>
+              <div id="review-contact" style="font-size: 0.9rem;"></div>
+            </div>
+            <div>
+              <div class="text-muted" style="font-size: 0.8rem; text-transform: uppercase;">Location</div>
+              <div id="review-location" style="font-size: 0.9rem;"></div>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--glass-border);">
+            <div class="text-muted" style="font-size: 0.8rem; text-transform: uppercase; margin-bottom: 4px;">Capacity
+            </div>
+            <div id="review-capacity" class="font-bold" style="color: var(--accent);"></div>
+          </div>
+
+          <div style="margin-top: var(--space-md);">
+            <div class="text-muted" style="font-size: 0.8rem; text-transform: uppercase; margin-bottom: 4px;">Species
+            </div>
+            <div id="review-species" class="flex flex-wrap gap-xs"></div>
+          </div>
+
+          <div style="margin-top: var(--space-md);">
+            <div class="text-muted" style="font-size: 0.8rem; text-transform: uppercase; margin-bottom: 4px;">End Uses
+            </div>
+            <div id="review-uses" class="flex flex-wrap gap-xs"></div>
+          </div>
+        </div>
+
+        <p class="text-muted" style="font-size: 0.85rem; text-align: center; margin-bottom: var(--space-xl);">
+          By submitting this form, you agree to BambooConnect validating your information for the public database.
+        </p>
+
+        <div class="flex justify-between">
+          <button class="btn btn-ghost prev-step">← Edit Details</button>
+          <button type="submit" id="btn-submit-reg" class="btn btn-accent">Complete Registration ✓</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Post Requirement Modal -->
+  <div id="post-requirement-modal" class="modal">
+    <div class="modal-header">
+      <h3>Post a Requirement</h3>
+      <button class="modal-close">&times;</button>
+    </div>
+
+    <div style="padding: var(--space-xl); max-height: calc(90vh - 70px); overflow-y: auto;">
+      <form id="post-requirement-form">
+        <div class="form-group">
+          <label class="form-label">Requirement Title</label>
+          <input type="text" name="title" class="form-input" placeholder="e.g. Bamboo poles for rural housing" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea name="description" class="form-input" rows="3"
+            placeholder="Provide details about your requirement..." required></textarea>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">Species Needed</label>
+            <select name="species" id="req-species" class="form-select" required>
+              <option value="any">Any Species</option>
+              <!-- Filled dynamically -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Quantity</label>
+            <input type="text" name="quantity" class="form-input" placeholder="e.g. 500 poles or 50 tonnes" required>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <select name="state" id="req-state" class="form-select" required>
+              <option value="">Select State</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">District</label>
+            <select name="district" id="req-district" class="form-select" required disabled>
+              <option value="">Select District</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">Your Organization / Name</label>
+            <input type="text" name="postedBy" class="form-input" placeholder="e.g. Skyline Builders" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contact Info</label>
+            <input type="text" name="contact" class="form-input" placeholder="Phone or Email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Urgency</label>
+          <select name="urgency" class="form-select" required>
+            <option value="low">Low - Flexible timeline</option>
+            <option value="medium" selected>Medium - Normal timeline</option>
+            <option value="high">High - Urgent delivery</option>
+          </select>
+        </div>
+
+        <div class="flex justify-end mt-4" style="margin-top: var(--space-xl);">
+          <button type="submit" id="btn-submit-req" class="btn btn-accent">Post Requirement</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/registration.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
